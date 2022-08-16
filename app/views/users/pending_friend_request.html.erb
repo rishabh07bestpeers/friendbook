@@ -1,0 +1,12 @@
+<br>
+<%if @users%>
+    <h2>Pending Friend Requests</h2>
+    <%@users.each do |user|%>
+        <%=user.first_name%>
+        <%= form_with model: user, url: friendrequest_path(user), method: :patch do |form| %>
+                <%= form.submit "Accept freind request"%>
+        <%end%>
+    <%end%>
+<%else%>
+    <h2>No pending freind request</h2>
+<%end%>
