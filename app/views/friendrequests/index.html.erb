@@ -1,0 +1,27 @@
+
+<div class="container">
+    <br>
+     <%=link_to "Go to home page", root_path, class: "btn btn-primary"%>
+    <h2 class="text-center">Friend List</h2>
+    <div class="row hidden-md-up">
+        <%@friends.each do |friend|%>
+             <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <%if friend.image.attached?%>
+                        <%= image_tag(friend.image, class: "card-img-top", style: "height:200px") %>
+                    <%else%>
+                        <%= image_tag('default_profile.jpeg', class: "card-img-top", style: "height:200px")%>
+                    <%end%>
+
+                    <div class="card-body">
+                        <h5 class="card-title"> <%=link_to friend.first_name.capitalize() + "  " + friend.last_name.capitalize(), user_path(friend)%></h5>
+                        
+                    </div>
+                        
+                </div>
+             </div>
+            
+            <br>
+        <%end%>
+    </div>
+</div>
