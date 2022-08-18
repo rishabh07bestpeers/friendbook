@@ -11,4 +11,10 @@ class User < ApplicationRecord
   has_many :friend_requests_as_receiver, foreign_key: :receiver_id, class_name: :FriendRequest
 
   has_one_attached :image
+
+  def has_last_name_greater_than_4?
+    if self.last_name.length > 4
+        return true
+    end
+  end
 end
