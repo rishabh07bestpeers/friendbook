@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     end
 
     def search
-        @users = User.where("first_name Like :search or last_name Like :search", search: "%#{params[:query]}%")
+        @users = User.where("lower(first_name) Like :search or lower(last_name) Like :search", search: "%#{params[:query].downcase}%")
     end
 
 end
