@@ -26,7 +26,7 @@ class FriendrequestsController < ApplicationController
     def update
         @friendrequest = current_user.friend_requests_as_receiver.where(requestor_id: params[:id]).first
    
-        if  @friendrequest.update(status: true)
+        if  @friendrequest != nil && @friendrequest.update(status: true)
             redirect_to root_path
         end
     end
